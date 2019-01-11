@@ -8,6 +8,7 @@ maxInd = len(chromScaleS) - 1
 # Define the Scale Intervals
 majInt = [2, 2, 1, 2, 2, 2, 1]
 minInt = [2, 1, 2, 2, 1, 2, 2]
+pentInt = [3, 2, 2, 2, 2]
 
 # Define the half tone intervals
 prime = 0

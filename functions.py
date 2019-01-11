@@ -37,9 +37,15 @@ def makeChromaticScaleF(baseTone):
     
     return userChromScaleF
 
+
+
 def makeMajorScale(baseTone, userChromScale):
 
     import static
+    
+    if 'b' in baseTone:
+        userChromScale = makeChromaticScaleF(baseTone)
+    
     ind = userChromScale.index(baseTone)
     userMajorScale = [userChromScale[ind]]
     
@@ -68,6 +74,24 @@ def makeMinorScale(baseTone, userChromScale):
         userMinorScale.append(userChromScale[ind]) # append the found note to the scale
         
     return userMinorScale
+
+def makePentaScale(baseTone, userChromScale):
+    
+    import static
+    
+    if 'b' in baseTone:
+        userChromScale = makeChromaticScaleF(baseTone)
+    
+    ind = userChromScale.index(baseTone)
+    userPentaScale = [userChromScale[ind]]
+    
+    # make the major scale
+    for i in range(0,len(static.pentInt)-1): # count from 0 to the end of the list
+        ind = ind + static.pentInt[i] # add the interval of majint to ind and accumulate the values, also offset due to python counting
+        # print(majInt[i])
+        userPentaScale.append(userChromScale[ind]) # append the found note to the scale
+        
+    return userPentaScale
 
 def makeMajorChord(baseTone, userChromScale):
     
