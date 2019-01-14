@@ -2,8 +2,14 @@
 """
 Created on Thu Jan  3 01:04:57 2019
 
+This is a helper file for creating scales and chords outside of classes.
+The functions will be used in the respective classes.
+This is done for more flexibility in handling stuff.
+
 @author: Erik
 """
+
+## Below are the functions for the creation of Scales 
 
 def makeChromaticScale(baseTone):
 
@@ -93,11 +99,11 @@ def makePentaScale(baseTone, userChromScale):
         
     return userPentaScale
 
+## Here come the chords, currently Major, minor, Major Seven, minor Seven and Dominant Seven
+
 def makeMajorChord(baseTone, userChromScale):
     
     import static
-    #ind = userChromScale.index(baseTone)
-    #userMajChord = [userChromScale[ind]]
     userMajChord = []
     
     # get the chord
@@ -110,3 +116,67 @@ def makeMajorChord(baseTone, userChromScale):
             userMajChord.append(userChromScale[ind])
         
     return userMajChord
+
+def makeMinorChord(baseTone, userChromScale):
+    
+    import static
+    userMinChord = []
+    
+    # get the chord
+    for i in range(0,len(static.minor)): # count through 0 to the end of the list
+        ind = static.minor[i] # add the interval of majint to ind and accumulate the values
+        if ind > static.maxInd: # check if we exceed the index of the chromatic scale list
+            nInd = ind - 12 # if this is the case subtract len(chromScale) from ind
+            userMinChord.append(userChromScale[nInd]) # append the found note to the scale
+        else:
+            userMinChord.append(userChromScale[ind])
+        
+    return userMinChord
+
+def makeMSeptChord(baseTone, userChromScale):
+    
+    import static
+    userMSeptChord = []
+    
+    # get the chord
+    for i in range(0,len(static.durSept)): # count through 0 to the end of the list
+        ind = static.durSept[i] # add the interval of majint to ind and accumulate the values
+        if ind > static.maxInd: # check if we exceed the index of the chromatic scale list
+            nInd = ind - 12 # if this is the case subtract len(chromScale) from ind
+            userMSeptChord.append(userChromScale[nInd]) # append the found note to the scale
+        else:
+            userMSeptChord.append(userChromScale[ind])
+        
+    return userMSeptChord
+
+def makemSeptChord(baseTone, userChromScale):
+    
+    import static
+    usermSeptChord = []
+    
+    # get the chord
+    for i in range(0,len(static.mSept)): # count through 0 to the end of the list
+        ind = static.mSept[i] # add the interval of majint to ind and accumulate the values
+        if ind > static.maxInd: # check if we exceed the index of the chromatic scale list
+            nInd = ind - 12 # if this is the case subtract len(chromScale) from ind
+            usermSeptChord.append(userChromScale[nInd]) # append the found note to the scale
+        else:
+            usermSeptChord.append(userChromScale[ind])
+        
+    return usermSeptChord
+
+def makeDomSeptChord(baseTone, userChromScale):
+    
+    import static
+    userDomSeptChord = []
+    
+    # get the chord
+    for i in range(0,len(static.domSept)): # count through 0 to the end of the list
+        ind = static.domSept[i] # add the interval of majint to ind and accumulate the values
+        if ind > static.maxInd: # check if we exceed the index of the chromatic scale list
+            nInd = ind - 12 # if this is the case subtract len(chromScale) from ind
+            userDomSeptChord.append(userChromScale[nInd]) # append the found note to the scale
+        else:
+            userDomSeptChord.append(userChromScale[ind])
+        
+    return userDomSeptChord

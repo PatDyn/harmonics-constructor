@@ -10,20 +10,25 @@ Created on Thu Jan  3 00:52:22 2019
 from functions import *
 from static import *
 from cl_scale import scale
+from cl_chord import chord
 
 # Get the base tone from input
 bT = 'C' #input('The Base Tone: ')
 
 s = scale(bT)
-userChromScale = s.constructChromScale()
-userMinorScale = s.constructScale(userChromScale, 'm')
-userMajorScale = s.constructScale(userChromScale, 'D')
-userPentaScale = s.constructScale(userChromScale, 'p')
+
+s.constructScale('m')
+s.show()
+
+s.constructScale('D')
+s.show()
+
+s.constructScale('p')
+s.show()
+
+c = chord(bT, 'M')
+c.construct()
+c.show()
 
 #userMajChord = makeMajorChord(bT, userChromScale)
-
-print('The chromatic scale:\n', userChromScale)
-print('The major scale:\n', userMajorScale)
-print('The minor scale:\n', userMinorScale)
-print('The pentatonic scale:\n', userPentaScale)
 #print('The Major Chord:\n', userMajChord)
