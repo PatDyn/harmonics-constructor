@@ -5,10 +5,6 @@ Created on Thu Jan  3 00:52:22 2019
 @author: Erik
 """
 
-
-
-from functions import *
-from static import *
 from cl_scale import scale
 from cl_chord import chord
 
