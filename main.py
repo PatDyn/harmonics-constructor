@@ -42,21 +42,21 @@ def press(button):
     if button == "Cancel":
         app.stop()
     else:
-        val = app.getLabelEntry("Base Tone")
+        val = app.getEntry("Base Tone")
+        
     return val
 
 app.addButtons(["Submit", "Cancel"], press)
 app.setFocus("Base Tone")
 
+app.go()
+
+bT = press("Base Tone")
 
 
-
-
-
-
-print("The base tone:", bT)
+# print("The base tone:", bT)
 # Get the base tone from input
-#bT = input('The Base Tone: ')
+# bT = input('The Base Tone: ')
 
 # check if a character was entered
 
@@ -69,7 +69,9 @@ else:
     print(chromScaleF)
     print(chromScaleS)
 
-bTtemp2 = re.search("[a-zA-Z]$", bT)
+bTtemp2 = re.search("[b #]", bT)
+
+# print("bTtemp2:", bTtemp2)
 
 if bTtemp2 != None:
     if bTtemp2.isalpha():
@@ -109,8 +111,6 @@ s.show()
 c = chord(bT, 'M')
 c.construct()
 c.show()
-
-app.go()
 
 #userMajChord = makeMajorChord(bT, userChromScale)
 #print('The Major Chord:\n', userMajChord)
