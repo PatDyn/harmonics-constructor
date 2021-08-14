@@ -9,6 +9,10 @@ maxInd = len(chromScaleS) - 1
 majInt = [2, 2, 1, 2, 2, 2, 1]
 minInt = [2, 1, 2, 2, 1, 2, 2]
 pentInt = [3, 2, 2, 2, 2]
+# more scales to come
+
+# Put the intervals into a dictionary
+intervals = {"maj":majInt, "min":minInt, "pent":pentInt}
 
 # Define the half tone intervals
 prime = 0

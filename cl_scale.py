@@ -20,11 +20,11 @@ class scale():
         import functions
         
         if 'b' in self.bT  :
-            self.uCS = functions.makeChromaticScaleF(self.bT)
+            self.uCS = functions.makeChromaticScaleF(self.bT) # the chromatic scale backwards - half tone steps are flat notes
         else:
-            self.uCS = functions.makeChromaticScale(self.bT)            
+            self.uCS = functions.makeChromaticScale(self.bT)  # the 'normal' chromatic scale - half tone steps are sharp
             
-    def constructScale(self, tonality): 
+    def constructScale(self, tonality): # create a scale
         
         import functions 
         

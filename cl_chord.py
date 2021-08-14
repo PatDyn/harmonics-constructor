@@ -27,7 +27,7 @@ class chord():
         if self.t == 'M' or self.t == 'D' :
             self.chord = functions.makeMajorChord(self.bT, self.uCS)
         elif self.t == 'm' :
-            self.chord = functions.makeMajorChord(self.bT, self.uCS)
+            self.chord = functions.makeMinorChord(self.bT, self.uCS)
         elif self.t == 'dom7' :
             self.chord = functions.makeDomSeptChord(self.bT, self.uCS)
         elif self.t == 'm7' :

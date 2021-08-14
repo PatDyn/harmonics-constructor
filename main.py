@@ -26,7 +26,7 @@ User can choose:
 import re
 
 # local imports
-from appJar import gui
+# from appJar import gui
 from cl_scale import scale
 from cl_chord import chord
 from static import chromScaleF
@@ -42,8 +42,7 @@ def press(button):
     if button == "Cancel":
         app.stop()
     else:
-        val = app.getEntry("Base Tone")
-        
+        val = app.getEntry("Base Tone")        
     return val
 
 app.addButtons(["Submit", "Cancel"], press)
@@ -51,30 +50,28 @@ app.setFocus("Base Tone")
 
 app.go()
 
-bT = press("Base Tone")
+bT = press("Please input the Base Tone: ")
+print("The base tone:", bT)
 
-
-# print("The base tone:", bT)
 # Get the base tone from input
 # bT = input('The Base Tone: ')
 
 # check if a character was entered
+bTtemp = re.search("^[a-zA-Z]", bT) 
 
-if bT.isalpha():
-    bTtemp = re.search("^[a-zA-Z]", bT) 
-    bTtemp = bTtemp[0]
-    bTtemp = bTtemp.upper()
+if bTtemp[0].isalpha():
+    bTtemp = bTtemp[0] # get first char of bT
+    bTtemp = bTtemp.upper() # make uppercase
 else:
     print("ERROR: Please Enter a note from the following chromatic scales:")
     print(chromScaleF)
     print(chromScaleS)
 
+# check if second character is flat or sharp sign
 bTtemp2 = re.search("[b #]", bT)
 
-# print("bTtemp2:", bTtemp2)
-
-if bTtemp2 != None:
-    if bTtemp2.isalpha():
+if bTtemp2 != None and bTtemp2 != "#": # check if bTtemp2 is None
+    if bTtemp2.isalpha(): 
         bTtemp2 = bTtemp2[0]
         bTtemp2 = bTtemp2.lower()
         bT = bTtemp + bTtemp2
@@ -82,23 +79,9 @@ if bTtemp2 != None:
         print("ERROR: Please Enter a note from the following chromatic scales:")
         print(chromScaleF)
         print(chromScaleS)
-
-
-        
-#print('2nd Part of bT:' + bTtemp2)
-
-
-#if bTtemp.isupper() == False: # Input Check - first if uppercase or lowercase
-#    bTtemp = bTtemp.swapcase()
-    
-       
-# deconstruct bT
-# check first char of bT for case
-# check second char of bT for case
-
+        print("This will now crash.")
 
 s = scale(bT)
-
 s.constructScale('m')
 s.show()
 
