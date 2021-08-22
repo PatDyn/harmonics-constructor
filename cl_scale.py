@@ -2,8 +2,6 @@
 """
 Created on Thu Jan  3 00:07:28 2019
 
-
-
 @author: Erik
 """
 
@@ -19,29 +17,20 @@ class scale():
         
         import functions
         
-        if 'b' in self.bT  :
-            self.uCS = functions.makeChromaticScaleF(self.bT) # the chromatic scale backwards - half tone steps are flat notes
-        else:
-            self.uCS = functions.makeChromaticScale(self.bT)  # the 'normal' chromatic scale - half tone steps are sharp
+        self.uCS = functions.makeChromaticScale(self.bT)
             
-    def constructScale(self, tonality): # create a scale
+    def constructScale(self, mode): # create a scale
         
         import functions 
-        
-        self.t = tonality
-        
-        if tonality == 'm':     
-            self.S = functions.makeMinorScale(self.bT, self.uCS)
-        elif tonality == 'p':
-            self.S = functions.makePentaScale(self.bT, self.uCS)
-        elif tonality == 'D' or tonality == 'M':
-            self.S = functions.makeMajorScale(self.bT, self.uCS)            
+
+        self.mode = mode        
+        self.S = functions.makeScale(self.bT, self.mode)
         
     def show(self):        
         
-        if self.t == 'm':     
+        if self.mode == 'min':     
             print('The minor scale:\n', self.S)
-        elif self.t == 'p':
+        elif self.mode == 'pent':
             print('The pentatonic scale:\n', self.S)
-        elif self.t == 'D' or self.t == 'M':
+        elif self.mode == 'maj':
             print('The major scale:\n', self.S)            
