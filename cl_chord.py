@@ -5,24 +5,34 @@ Created on Sat Dec 22 21:23:24 2018
 @author: Erik
 """
 
+from cl_static import static
+from cl_scale import scale
+
 # chord class
 
 class chord():
     
     def __init__(self, baseTone):
+        self.static = static()
         self.bT = baseTone
-               
-        import functions
-        
-        self.uCS = functions.makeChromaticScale(self.bT)            
-        
-    def constructChord(self, tonality):
-           
-        import functions
-        self.t = tonality 
+        self.chord = []
+        self.t = ""
 
-        self.chord = functions.makeChord(self.bT, self.t)
-    
+    def constructChord(self, mode):
+
+        self.t = mode
+
+        # the base scale
+        s = scale(self.bT) 
+        userChromScale = s.constructChromScale()
+        chord = self.static.chords[mode]
+
+        # step through intervals in the chord
+        for interval in chord:         
+            self.chord.append(userChromScale[interval%12])
+
+        return self.chord
+        
     def show(self):
         
         if self.t == 'maj' :

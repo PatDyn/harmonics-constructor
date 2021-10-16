@@ -5,26 +5,75 @@ Created on Thu Jan  3 00:07:28 2019
 @author: Erik
 """
 
+from cl_static import static
+
+## Helper Function: chromScalePicker
+## accepts a base tone, string
+## returns a string, S or F depending on the base tone
+
 class scale():    
     
     def __init__(self, baseTone):
-        self.bT = baseTone        
+        self.bT = baseTone       
+        self.stat = static() 
         self.uCS = []
         self.S = []
-        self.constructChromScale()
-        
-    def constructChromScale(self): 
-        
-        import functions
-        
-        self.uCS = functions.makeChromaticScale(self.bT)
-            
-    def constructScale(self, mode): # create a scale
-        
-        import functions 
 
-        self.mode = mode        
-        self.S = functions.makeScale(self.bT, self.mode)
+    def chromScalePicker(self): 
+
+        if 'b' in self.bT:
+            mode = 'F'
+        elif self.bT == 'C' or self.bT == 'D' or self.bT == 'F' or self.bT == 'G':
+            mode = 'F'
+        else:
+            mode = 'S'
+        return mode
+
+    def constructChromScale(self):
+
+        ## Get the mode of the Chromatic Scale
+        modeSwitch = self.chromScalePicker()
+
+        ## Generate scales from input
+        chromScaleLocal = self.stat.chromScale[modeSwitch]
+        index = chromScaleLocal.index(self.bT)
+
+        if index == 0: # is the base tone the first note in the scale?
+            userChromScale = chromScaleLocal
+        elif index == len(chromScaleLocal)-1: # or is it the last?
+            userChromScale = [*[chromScaleLocal[index]], *chromScaleLocal[0:index]] 
+        else:
+            userChromScale = [*chromScaleLocal[index:12], *chromScaleLocal[0:index]]
+
+        return userChromScale
+            
+    # makeScale: constructs a scale from input
+    # accepts a base tone, a type switch for the kind of scale
+    # returns a list of characters 
+
+    def constructScale(self, mode): 
+
+        self.mode = mode
+        userChromScale = self.constructChromScale()
+
+        # from the type switch, get the interval-scheme 
+        # with the chromatic scale from before, we return the correct scale
+        interval_skips = self.stat.intervals[mode]
+
+        # null-entry is the base tone
+        userScale = [self.bT]
+
+        # indices following the base tone
+        index = userChromScale.index(self.bT)
+
+        # make the scale
+        for interval in interval_skips: # 
+
+            index = index + interval
+
+            userScale.append(userChromScale[index%12]) 
+
+        self.S = userScale
         
     def show(self):        
         
