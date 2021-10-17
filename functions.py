@@ -11,7 +11,7 @@ This is done for more flexibility in handling stuff.
 
 ## Below are the functions for the creation of Scales 
 
-## Helper FUnction: chromScalePicker
+## Helper Function: chromScalePicker
 ## accepts a base tone, string
 ## returns a string, S or F depending on the base tone
 

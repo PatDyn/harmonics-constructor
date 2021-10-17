@@ -16,11 +16,10 @@ class chord():
         self.static = static()
         self.bT = baseTone
         self.chord = []
-        self.t = ""
 
     def constructChord(self, mode):
 
-        self.t = mode
+        self.mode = mode
 
         # the base scale
         s = scale(self.bT) 
@@ -35,13 +34,13 @@ class chord():
         
     def show(self):
         
-        if self.t == 'maj' :
+        if self.mode == 'maj' :
             print('The major chord:\n', self.chord)
-        elif self.t == 'min' :
+        elif self.mode == 'min' :
             print('The minor chord:\n', self.chord)
-        elif self.t == 'domS' :
+        elif self.mode == 'domS' :
             print('The dominant 7 chord:\n', self.chord)
-        elif self.t == 'minS' :
+        elif self.mode == 'minS' :
             print('The minor 7 chord:\n', self.chord)
-        elif self.t == 'maj7': 
+        elif self.mode == 'maj7': 
             print('The major 7 chord:\n', self.chord)

@@ -9,7 +9,7 @@ from cl_scale import scale
 from cl_chord import chord
 
 # Get the base tone from input
-bT = 'C' #input('The Base Tone: ')
+bT = 'Cb' #input('The Base Tone: ')
 
 s = scale(bT)
 
