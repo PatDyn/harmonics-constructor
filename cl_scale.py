@@ -7,16 +7,24 @@ Created on Thu Jan  3 00:07:28 2019
 
 from cl_static import static
 
-## Helper Function: chromScalePicker
+## Helper Function: sanitize
 ## accepts a base tone, string
-## returns a string, S or F depending on the base tone
+## returns the base tone if in chromatic_scale
+## or returns an error message
+
+def sanitize(baseTone):
+
+    if baseTone in static.chromScaleF or baseTone in static.chromScaleS:
+        return baseTone
+    else: 
+        raise ValueError("The input: " + baseTone + " was invalid")
 
 class scale():    
     
     def __init__(self, baseTone):
-        self.bT = baseTone       
+
+        self.bT = sanitize(baseTone)
         self.stat = static() 
-        self.uCS = []
         self.S = []
 
     def chromScalePicker(self): 
@@ -27,6 +35,7 @@ class scale():
             mode = 'F'
         else:
             mode = 'S'
+            
         return mode
 
     def constructChromScale(self):
@@ -61,7 +70,7 @@ class scale():
         interval_skips = self.stat.intervals[mode]
 
         # null-entry is the base tone
-        userScale = [self.bT]
+        self.S = [self.bT]
 
         # indices following the base tone
         index = userChromScale.index(self.bT)
@@ -71,9 +80,9 @@ class scale():
 
             index = index + interval
 
-            userScale.append(userChromScale[index%12]) 
+            self.S.append(userChromScale[index%12]) 
 
-        self.S = userScale
+        return self.S
         
     def show(self):        
         
