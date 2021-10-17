@@ -9,7 +9,7 @@ from cl_scale import scale
 from cl_chord import chord
 
 # Get the base tone from input
-bT = 'Cb' #input('The Base Tone: ')
+bT = 'C' #input('The Base Tone: ')
 
 s = scale(bT)
 
@@ -26,6 +26,14 @@ c = chord(bT)
 c.constructChord('maj')
 c.show()
 
-#userMajChord = makeMajorChord(bT, userChromScale)
-#print('The Major Chord:\n', userMajChord)
+c.constructChord('majS')
+c.show()
 
+c.constructChord('min')
+c.show()
+
+c.constructChord('domS')
+c.show()
+
+c.constructChord('minS')
+c.show()

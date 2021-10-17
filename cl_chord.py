@@ -15,15 +15,17 @@ class chord():
     def __init__(self, baseTone):
         self.static = static()
         self.bT = baseTone
-        self.chord = []
 
     def constructChord(self, mode):
 
+        # Every time constructChord is called, we construct a new chord
+        self.chord = []
         self.mode = mode
 
-        # the base scale
+        # create the base scale
         s = scale(self.bT) 
         userChromScale = s.constructChromScale()
+
         chord = self.static.chords[mode]
 
         # step through intervals in the chord
@@ -42,5 +44,5 @@ class chord():
             print('The dominant 7 chord:\n', self.chord)
         elif self.mode == 'minS' :
             print('The minor 7 chord:\n', self.chord)
-        elif self.mode == 'maj7': 
+        elif self.mode == 'majS': 
             print('The major 7 chord:\n', self.chord)
