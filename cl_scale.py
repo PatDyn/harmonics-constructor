@@ -14,10 +14,15 @@ from cl_static import static
 
 def sanitize(baseTone):
 
-    if baseTone in static.chromScaleF or baseTone in static.chromScaleS:
-        return baseTone
+    if type(baseTone) != str:
+        raise TypeError("Input must be str not: " + str(type(baseTone)))
+    
+    bT = baseTone.capitalize()
+
+    if bT in static.chromScaleF or bT in static.chromScaleS:
+        return bT    
     else: 
-        raise ValueError("The input: " + baseTone + " was invalid")
+        raise ValueError("Invalid input: " + baseTone)
 
 class scale():    
     
@@ -35,7 +40,7 @@ class scale():
             mode = 'F'
         else:
             mode = 'S'
-            
+
         return mode
 
     def constructChromScale(self):
