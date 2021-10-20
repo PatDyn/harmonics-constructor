@@ -12,24 +12,14 @@ from cl_static import static
 ## returns the base tone if in chromatic_scale
 ## or returns an error message
 
-def sanitize(baseTone):
 
-    if type(baseTone) != str:
-        raise TypeError("Input must be str not: " + str(type(baseTone)))
-    
-    bT = baseTone.capitalize()
-
-    if bT in static.chromScaleF or bT in static.chromScaleS:
-        return bT    
-    else: 
-        raise ValueError("Invalid input: " + baseTone)
 
 class scale():    
     
     def __init__(self, baseTone):
-
-        self.bT = sanitize(baseTone)
+        
         self.stat = static() 
+        self.bT = self.stat.sanitizeTone(baseTone)       
         self.S = []
 
     def chromScalePicker(self): 
@@ -67,7 +57,7 @@ class scale():
 
     def constructScale(self, mode): 
 
-        self.mode = mode
+        self.mode = self.stat.sanitizeMode(mode)
         userChromScale = self.constructChromScale()
 
         # from the type switch, get the interval-scheme 

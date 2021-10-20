@@ -72,7 +72,32 @@ class static():
         self.chords = {
             "maj":  self.major, 
             "min":  self.minor, 
-            "domS": self.domSept, 
-            "majS": self.majSept, 
-            "minS": self.minSept}
+            "dom7": self.domSept, 
+            "maj7": self.majSept, 
+            "min7": self.minSept}
+    
+    def sanitizeTone(self, baseTone):
+
+        if type(baseTone) != str:
+            raise TypeError("Input must be str not: " + str(type(baseTone)))
+
+        bT = baseTone.capitalize()
+
+        if bT in self.chromScale["F"] or bT in self.chromScale["S"]:
+            return bT    
+        else: 
+            raise ValueError("Invalid input: " + baseTone)
+    
+    def sanitizeMode(self, mode):
+
+        if type(mode) != str:
+            raise TypeError("Input must be str not: " + str(type(mode)))
+
+        m = mode.lower()
+        modes = list(self.intervals.keys()) + list(self.chords.keys())
+
+        if m in modes:
+            return m    
+        else: 
+            raise ValueError("Invalid input: " + mode)
 
