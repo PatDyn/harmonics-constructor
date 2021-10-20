@@ -88,17 +88,17 @@ class static():
         else: 
             raise ValueError("Invalid input: " + baseTone)
     
-    def sanitizeMode(self, mode, type):
+    def sanitizeMode(self, mode, ty):
 
         if type(mode) != str:
             raise TypeError("Input must be str not: " + str(type(mode)))
 
         m = mode.lower()
 
-        if type == "scale":
+        if ty == "scale":
             modes = list(self.intervals.keys())
         else:
-            modes =  list(self.chords.keys())
+            modes = list(self.chords.keys())
 
         if m in modes:
             return m    

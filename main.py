@@ -21,25 +21,24 @@ def main():
     print("You can enter Notes from: \n") 
     print(stat.chromScaleF)
     print(stat.chromScaleS)    
-    note = str(input("\n Please Enter a Note: "))
+    note = str(input("\nPlease Enter a Note: "))
 
-    print("Now choose a mode for the scale: \n")    
+    print("Now choose a mode for the scale: ")    
     print(scaleModes)
-    modeScale = str(input("Please choose: "))
-
-    print("Now choose a mode for the chord: \n")    
-    print(chordModes)
-    modeChord = str(input("Please choose: "))
-
-    
-    print("\n")
+    modeScale = str(input("\nPlease choose: "))
     s = scale(note)
     s.constructScale(modeScale)
+
+    print("Now choose a mode for the chord: ")    
+    print(chordModes)
+    modeChord = str(input("\nPlease choose: "))
+    c = chord(note)
+    c.constructChord(modeChord)
+    
+    print("\n")
     s.show()
 
     print("\n")
-    c = chord(note)
-    c.constructChord(modeChord)
     c.show()
 
 
