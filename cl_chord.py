@@ -23,7 +23,7 @@ class chord():
 
         # Every time constructChord is called, we construct a new chord
         self.chord = []
-        self.mode = self.stat.sanitizeMode(mode)
+        self.mode = self.stat.sanitizeMode(mode, "chord")
 
         # create the base scale
         s = scale(self.bT) 

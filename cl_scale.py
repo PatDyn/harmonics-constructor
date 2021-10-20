@@ -57,7 +57,7 @@ class scale():
 
     def constructScale(self, mode): 
 
-        self.mode = self.stat.sanitizeMode(mode)
+        self.mode = self.stat.sanitizeMode(mode, "scale")
         userChromScale = self.constructChromScale()
 
         # from the type switch, get the interval-scheme 

@@ -24,7 +24,7 @@ def main():
     note = str(input("\n Please Enter a Note: "))
 
     print("Now choose a mode for the scale: \n")    
-    print(chordModes)
+    print(scaleModes)
     modeScale = str(input("Please choose: "))
 
     print("Now choose a mode for the chord: \n")    
