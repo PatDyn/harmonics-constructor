@@ -15,7 +15,7 @@ from cl_scale import scale
 class chord():
     
     def __init__(self, baseTone):
-        
+
         self.stat = static()
         self.bT = self.stat.sanitizeTone(baseTone)
 
@@ -39,13 +39,13 @@ class chord():
         
     def show(self):
         
-        if self.mode == 'maj' :
-            print('The major chord:\n', self.chord)
-        elif self.mode == 'min' :
-            print('The minor chord:\n', self.chord)
-        elif self.mode == 'dom7' :
-            print('The dominant 7 chord:\n', self.chord)
-        elif self.mode == 'min7' :
-            print('The minor 7 chord:\n', self.chord)
-        elif self.mode == 'maj7': 
-            print('The major 7 chord:\n', self.chord)
+        if self.mode == "maj" :
+            print("The " + self.bT + " major chord:\n", self.chord)
+        elif self.mode == "min" :
+            print("The " + self.bT + " minor chord:\n", self.chord)
+        elif self.mode == "dom7" :
+            print("The " + self.bT + " dominant 7 chord:\n", self.chord)
+        elif self.mode == "min7" :
+            print("The " + self.bT + " minor 7 chord:\n", self.chord)
+        elif self.mode == "maj7": 
+            print("The " + self.bT + " major 7 chord:\n", self.chord)

@@ -81,9 +81,9 @@ class scale():
         
     def show(self):        
         
-        if self.mode == 'min':     
-            print('The minor scale:\n', self.S)
-        elif self.mode == 'pent':
-            print('The pentatonic scale:\n', self.S)
-        elif self.mode == 'maj':
-            print('The major scale:\n', self.S)            
+        if self.mode == "min":     
+            print("The " + self.bT + " minor scale:\n", self.S)
+        elif self.mode == "pent":
+            print("The " + self.bT + " pentatonic scale:\n", self.S)
+        elif self.mode == "maj":
+            print("The " + self.bT + " major scale:\n", self.S)            
