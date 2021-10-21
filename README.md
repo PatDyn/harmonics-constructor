@@ -36,3 +36,4 @@ major - maj, minor - min, dominant 7 - dom7,
 major 7 - maj7, minor 7 - min7
 ```
 
+The script will then construct the scale and the chord from the base tone and the tonality. The results are printed on the terminal.
